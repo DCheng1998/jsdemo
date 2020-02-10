@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<title>Title</title>
+</head>
+<style>
+  #di{
+      width: 520px;
+      height: 280px;
+      border: solid 1px black;
+      margin: auto; /*居中*/
+      position: relative;
+      overflow: hidden;
+  }
+   #di div{
+       width: 520px;
+       height:280px;
+       position: absolute;
+       top: 0px;
+       left: 520px;
+   }
+  #di div:nth-child(1){
+        background-image: url("../image/TB1ieKUvhn1gK0jSZKPXXXvUXXa-520-280.jpg_q90_.webp");}
+  #di div:nth-child(2){
+      background-image: url("../image/TB1Lp1niuL2gK0jSZPhSuuhvXXa.jpg");}
+  #di div:nth-child(3){
+      background-image: url("../image/TB1o.1hukT2gK0jSZFkSuwIQFXa.jpg");}
+  #di div:nth-child(4){
+      background-image: url("../image/TB1Zqzoe1bviK0jSZFNSuuApXXa.jpg");}
+  ul{
+        list-style: none;
+        position: absolute;
+        bottom: 5px;
+        right: 10px;
+
+    }
+  ul li{
+      width: 15px;
+      height: 15px;
+      border-radius:50% ;
+      background-color:darkgrey;
+      float: left;
+      margin-left: 5px;
+  }
+    /*动画实现动态效果*/
+    @keyframes in{
+        from{
+            left: 520px;
+        }
+        to{ left: 0px;}
+    }
+    /*定义一个class样式 动画得执行*/
+    #di .movein{
+        animation:in 1s;
+        left:0px ;
+    }
+  @keyframes out {
+      from{
+          left: 0px;
+      }
+      to{
+          left: -520px;
+      }
+  }
+    #di .moveout{
+        animation:out 1s;
+        left: 520px;
+    }
+</style>
+<body>
+<!--先写好html样式  再写动态效果-->
+<!--创建div用来显示图片-->
+<div id="di">
+    <div class="moveout"></div>
+    <div class="movein"></div>
+    <div class="moveout"></div>
+    <div class="moveout"></div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</div>
+<script src="jquery-3.4.1.min.js"></script>
+<script>
+    $(function () {
+        $("ul li").click(function () {
+            //点击的是哪个li
+         var ind= $(this).index()
+            //eq()方法是取值的
+            $("#di div").eq(ind).addClass("movein").removeClass("moveout").siblings("div").removeClass("movein").addClass("moveout")
+            //图片显示
+    })})
+    //图片的自动播放
+        //定时器  1.做什么function（）{}时间 ms
+        setTimeout(function () {
+            console.log("定时器时间到了")
+        },1000)
+//setInterval  每隔多长时间执行function代码块
+    var i=0;
+    var interval=setInterval(function () {
+        if(i>3){
+            i=0;
+        }
+
+    },1000)
+       $("#di div").mousemove(function () {
+           clearInterval(interval)
+       })
+         $("#di div").mouseleave(function () {
+             interval=setInterval(function () {
+                 if(i>3){
+                     i=0
+                 }
+                 $("#di div").eq(i).addClass("movein").removeClass("moveout").siblings('div').removeClass("movein").addClass("moveout")
+                 i++
+             },1000)
+         })
+</script>
+</body>
+</html>

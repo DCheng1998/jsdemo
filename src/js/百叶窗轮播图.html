@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>百叶窗轮播图</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #di{
+            width: 520px;
+            height: 280px;
+            border: solid 1px black;
+            margin: auto;
+            position: relative;
+        }
+        #di .pi{
+            width: 104px;
+            height: 280px;
+            float: left;
+            overflow: hidden;
+        }
+        #di .pi div{
+            width: 104px;
+            height: 280px;
+            position: absolute;
+            left: 104px;
+        }
+        #di .pi div:nth-child(1){
+            background-image: url("../image/TB1ieKUvhn1gK0jSZKPXXXvUXXa-520-280.jpg_q90_.webp");
+        }
+        #di .pi div:nth-child(2){
+            background-image: url("../image/TB1Lp1niuL2gK0jSZPhSuuhvXXa.jpg");
+        }
+        #di .pi div:nth-child(3){
+            background-image: url("../image/TB1o.1hukT2gK0jSZFkSuwIQFXa.jpg");
+        }
+        #di .pi div:nth-child(4){
+            background-image: url("../image/TB1Zqzoe1bviK0jSZFNSuuApXXa.jpg");
+        }
+        #di .pi:nth-child(2) div:nth-child(1){
+            background-image: url("../image/TB1ieKUvhn1gK0jSZKPXXXvUXXa-520-280.jpg_q90_.webp");
+            background-position: -104px 0px;
+        }
+        #di .pi:nth-child(2) div:nth-child(2){
+            background-image: url("../image/TB1Lp1niuL2gK0jSZPhSuuhvXXa.jpg");
+            background-position: -104px 0px;
+        }
+        #di .pi:nth-child(2) div:nth-child(3){
+            background-image: url("../image/TB1o.1hukT2gK0jSZFkSuwIQFXa.jpg");
+            background-position: -104px 0px;
+        }
+        #di .pi:nth-child(2) div:nth-child(4){
+            background-image: url("../image/TB1Zqzoe1bviK0jSZFNSuuApXXa.jpg");
+            background-position: -104px 0px;
+        }
+        #di .pi:nth-child(3) div:nth-child(1){
+            background-image: url("../image/TB1ieKUvhn1gK0jSZKPXXXvUXXa-520-280.jpg_q90_.webp");
+            background-position: -208px 0px;
+        }
+        #di .pi:nth-child(3) div:nth-child(2){
+            background-image: url("../image/TB1Lp1niuL2gK0jSZPhSuuhvXXa.jpg");
+            background-position: -208px 0px;
+        }
+        #di .pi:nth-child(3) div:nth-child(3){
+            background-image: url("../image/TB1o.1hukT2gK0jSZFkSuwIQFXa.jpg");
+            background-position: -208px 0px;
+        }
+        #di .pi:nth-child(3) div:nth-child(4){
+            background-image: url("../image/TB1Zqzoe1bviK0jSZFNSuuApXXa.jpg");
+            background-position: -208px 0px;
+        }
+        #di .pi:nth-child(4) div:nth-child(1){
+            background-image: url("../image/TB1ieKUvhn1gK0jSZKPXXXvUXXa-520-280.jpg_q90_.webp");
+            background-position: -312px 0px;
+        }
+        #di .pi:nth-child(4) div:nth-child(2){
+            background-image: url("../image/TB1Lp1niuL2gK0jSZPhSuuhvXXa.jpg");
+            background-position: -312px 0px;
+        }
+        #di .pi:nth-child(4) div:nth-child(3){
+            background-image: url("../image/TB1o.1hukT2gK0jSZFkSuwIQFXa.jpg");
+            background-position: -312px 0px;
+        }
+        #di .pi:nth-child(4) div:nth-child(4){
+            background-image: url("../image/TB1Zqzoe1bviK0jSZFNSuuApXXa.jpg");
+            background-position: -312px 0px;
+        }
+        #di .pi:nth-child(5) div:nth-child(1){
+            background-image: url("../image/TB1ieKUvhn1gK0jSZKPXXXvUXXa-520-280.jpg_q90_.webp");
+            background-position: -416px 0px;
+        }
+        #di .pi:nth-child(5) div:nth-child(2){
+            background-image: url("../image/TB1Lp1niuL2gK0jSZPhSuuhvXXa.jpg");
+            background-position: -416px 0px;
+        }
+        #di .pi:nth-child(5) div:nth-child(3){
+            background-image: url("../image/TB1o.1hukT2gK0jSZFkSuwIQFXa.jpg");
+            background-position: -416px 0px;
+        }
+        #di .pi:nth-child(5) div:nth-child(4){
+            background-image: url("../image/TB1Zqzoe1bviK0jSZFNSuuApXXa.jpg");
+            background-position: -416px 0px;
+        }
+        ul{
+            list-style: none;
+            position: absolute;
+            bottom: 5px;
+            right: 10px;
+        }
+        ul li{
+            width: 15px;
+            height: 15px;
+            border-radius:50% ;
+            background-color:darkgrey;
+            float: left;
+            margin-left: 5px;
+        }
+        @keyframes in{
+            from{
+                left: 104px;
+            }
+            to{ left: 0px;}
+        }
+        /*定义一个class样式 动画得执行*/
+        #di .movein{
+            animation:in 1s;
+            left:0px ;
+        }
+        @keyframes out {
+            from{
+                left: 0px;
+            }
+            to{
+                left: -104px;
+            }
+        }
+        #di .moveout{
+            animation:out 1s;
+            left: 104px;
+        }
+    </style>
+</head>
+<body>
+<div id="di">
+    <div class="pi">
+        <div class="movein"></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="pi">
+        <div class="movein"></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="pi">
+        <div class="movein"></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="pi">
+        <div class="movein"></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="pi">
+        <div class="movein"></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</div>
+    <script src="jquery-3.4.1.min.js"></script>
+    <script>
+        $(function () {
+            $("ul li").click(function () {
+              var ind=$(this).index()
+               $("#di .pi").each(function (e,ele) {
+                   $(el).children().eq(ind).addClass("movein").removeClass("moveout").siblings('div').removeClass("movein").addClass("moveout")
+               })
+            })})
+    </script>
+
+</body>
+</html>

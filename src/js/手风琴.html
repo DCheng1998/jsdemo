@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>百叶窗轮播图</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+     #di{
+         width:670px;
+         height:280px;
+         border:solid 1px black;
+         margin: auto;
+     }
+    #di div{
+        float: left;
+    }
+    #di div:nth-child(1){
+        width: 520px;
+        height: 280px;
+        background-image: url("../image/TB1Zqzoe1bviK0jSZFNSuuApXXa.jpg");
+    }
+    #di div:nth-child(2){
+        width: 50px;
+        height: 280px;
+        background-image: url("../image/TB1o.1hukT2gK0jSZFkSuwIQFXa.jpg");
+    }
+    #di div:nth-child(3){
+        width: 50px;
+        height: 280px;
+        background-image: url("../image/TB1Lp1niuL2gK0jSZPhSuuhvXXa.jpg");
+    }
+    #di div:nth-child(4){
+        width: 50px;
+        height: 280px;
+        background-image: url("../image/TB1ieKUvhn1gK0jSZKPXXXvUXXa-520-280.jpg_q90_.webp");
+    }
+    .a{
+        transition:1s;
+    }
+
+</style>
+<body>
+ <script src="jquery-3.4.1.min.js"></script>
+ <div id="di">
+     <div></div>
+     <div></div>
+     <div></div>
+     <div></div>
+ </div>
+<script>
+    $(function () {
+        $("#di div").click(function () {
+            $(this).width("520px").addClass("a").siblings().width("50px")
+        })
+    })
+</script>
+
+</body>
+</html>
