@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            background: darkgrey;
+        }
+        *{ padding: 0;
+           margin: 0}
+        #di{
+            width: 66px;
+            height: 82px;
+
+            perspective: 800px;
+            position: absolute;
+        }
+        #di .image{
+            width: 66px;
+            height: 82px;
+
+            transform-style: preserve-3d;
+            position: absolute;
+        }
+        #di .image img{
+            box-shadow: 1px 5px 10px 8px lightseagreen;
+            -webkit-box-reflect:below 1px ;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id ="di">
+    <div class="image">
+        <img src="../image/shoot1_0.png" width="66" height="82">
+        <img src="../image/shoot1_1.png" width="66" height="82">
+        <img src="../image/shoot1_2.png" width="66" height="82">
+        <img src="../image/shoot1_3.png" width="66" height="82">
+        <img src="../image/walk1_0.png"  width="66" height="82">
+        <img src="../image/walk1_1.png" width="66" height="82">
+        <img src="../image/walk1_2.png" width="66" height="82">
+    </div>
+</div>
+<script src="jquery-3.4.1.min.js"></script>
+<script>
+    $(function () {
+        var wrapx = 0;
+        var wrapy = 0;
+        $(window).mousedown(function (e) {
+            var befor_left = e.pageX || e.clientX;
+            var befor_top = e.pageY || e.clientY; //按下时候鼠标的位置
+            var flag = true;
+            $(window).mousemove(function (ev) {
+                if (flag) {
+                    var after_left = ev.pageX || ev.clientX;
+                    var after_top = ev.pageY || ev.clientY;//移动时候鼠标的位置
+                    var aleft = after_left - befor_left + wrapx;
+                    var atop = after_top - befor_top + wrapy;
+
+                    $("#di .image").css({
+                        transform: "rotateX(" + atop + "deg) rotateY(" + aleft + "deg)"
+                    })
+                    wrapx = atop;
+                    wrapy = aleft;
+                }
+
+            })
+                .mouseup(function () {
+                    flag = false;
+                })
+        })
+
+        init();
+        $(window).resize(init)
+
+        function init() {
+            var _left = ($(window).width() - $("#di").width()) / 2
+            var _top = ($(window).height() - $("#di").height()) / 2
+            console.log(_left)
+            console.log(_top)
+            $("#di").css(
+                {
+                    top: _top + "px",
+                    left: _left + "px"
+                })
+            $(".image img").each(function (index, element) {
+                var deg = 360 / $(".image img").length
+                $(element).css({
+                    transform: "rotateY(" + index * deg + "deg) translateZ(200px)",
+                    transition:"1s"
+                })
+            })
+        }
+    })
+
+
+
+
+</script>
+</body>
+</html>

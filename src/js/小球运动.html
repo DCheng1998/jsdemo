@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #di {
+            width: 300px;
+            height: 300px;
+            border: solid 1px #444444;
+            border-radius: 50%;
+            position: relative;
+            left: 30px;
+            top: 30px;
+        }
+        #point {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: aquamarine;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="di">
+    <div id="point"></div>
+</div>
+
+<script src="jquery-3.4.1.min.js"></script>
+<script>
+    $(function () {
+        var x=300/2-10/2;
+        var y=300/2-10/2;
+        var r=150;
+        var deg=0;
+        setInterval(function () {
+            var _left=Math.sin(deg/180*Math.PI)*r+x;
+            var _top=Math.cos(deg/180*Math.PI)*r+y;
+            $("#point").css(
+                {"left":_left+"px",
+                 "top":+_top+"px"}
+            )
+            deg++;
+            if(deg==360){
+                deg==0;
+            }
+
+        })
+    })
+</script>
+</body>
+</html>
